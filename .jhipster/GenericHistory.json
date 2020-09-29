@@ -1,0 +1,30 @@
+{
+  "name": "GenericHistory",
+  "fields": [
+    {
+      "fieldName": "startDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "language",
+      "fieldType": "Language",
+      "fieldValues": "FRENCH,ENGLISH,SPANISH"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200929232506",
+  "entityTableName": "generic_history",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

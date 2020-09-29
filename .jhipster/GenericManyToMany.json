@@ -1,0 +1,30 @@
+{
+  "name": "GenericManyToMany",
+  "fields": [
+    {
+      "fieldName": "fieldManyToMany",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "generic",
+      "otherEntityRelationshipName": "genericManyToMany",
+      "relationshipName": "generic",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200929232606",
+  "entityTableName": "generic_many_to_many",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

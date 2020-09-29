@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-generic-one-to-many-heading" jhiTranslate="jhipsterGenericAplicationApp.genericOneToMany.home.createOrEditLabel">Create or edit a Generic One To Many</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.genericOneToMany.fieldOneToMany" for="field_fieldOneToMany">Field One To Many</label>
+                    <input type="text" class="form-control" name="fieldOneToMany" id="field_fieldOneToMany"
+                           formControlName="fieldOneToMany"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.genericOneToMany.generic" for="field_generic">Generic</label>
+                    <select class="form-control" id="field_generic" name="generic" formControlName="generic">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="genericOption.id === editForm.get('generic')!.value?.id ? editForm.get('generic')!.value : genericOption" *ngFor="let genericOption of generics; trackBy: trackById">{{ genericOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
