@@ -1,0 +1,55 @@
+
+entity Generic {
+	fieldString String required,
+    fieldInteger Integer,
+    fieldLong Long,
+    fieldBigDecimal BigDecimal,
+    fieldFloat Float,
+    fieldDouble Double,
+    fieldBoolean Boolean,
+    fieldLocalDate LocalDate,
+    fieldZonedDateTime ZonedDateTime,
+    fieldDuration Duration,
+    fieldUUID UUID,
+    fieldBlob Blob,
+    fieldAnyBlob AnyBlob,
+    fieldImageBlob ImageBlob,
+    fieldTextBlob TextBlob  
+}
+entity GenericHistory {
+	startDate Instant,
+	endDate Instant,
+	language Language
+}
+
+entity GenericManyToMany {
+	fieldManyToMany String,    
+}
+
+entity GenericOneToMany {
+	fieldOneToMany String,    
+}
+
+entity GenericManyToOne {
+	fieldManyToOne String,    
+}
+
+enum Language {
+    FRENCH, ENGLISH, SPANISH
+}
+
+relationship OneToOne {
+	Generic{genericHistory} to GenericHistory
+}
+
+relationship ManyToMany {
+	Generic{genericManyToMany(fieldManyToMany)} to GenericManyToMany{generic}
+}
+
+relationship OneToMany {
+	Generic to GenericOneToMany{generic}
+}
+
+relationship ManyToOne {
+	Generic{genericManyToOne} to GenericManyToOne
+}
