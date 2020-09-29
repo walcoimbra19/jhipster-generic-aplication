@@ -8,7 +8,6 @@ entity Generic {
     fieldDouble Double,
     fieldBoolean Boolean,
     fieldLocalDate LocalDate,
-    fieldDate Date,
     fieldZonedDateTime ZonedDateTime,
     fieldDuration Duration,
     fieldUUID UUID,
