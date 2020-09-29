@@ -8,15 +8,13 @@ entity Generic {
     fieldDouble Double,
     fieldBoolean Boolean,
     fieldLocalDate LocalDate,
-    fieldDate Date,
     fieldZonedDateTime ZonedDateTime,
     fieldDuration Duration,
     fieldUUID UUID,
     fieldBlob Blob,
     fieldAnyBlob AnyBlob,
     fieldImageBlob ImageBlob,
-    fieldTextBlob TextBlob,
-    fieldByteBuffer ByteBuffer    
+    fieldTextBlob TextBlob  
 }
 entity GenericHistory {
 	startDate Instant,
@@ -45,7 +43,8 @@ relationship OneToOne {
 }
 
 relationship ManyToMany {
-	Generic{GenericManyToMany} to GenericManyToMany
+	Generic{GenericManyToMany} to GenericManyToMany,
+    GenericManyToMany{Generic} to Generic
 }
 
 relationship OneToMany {
