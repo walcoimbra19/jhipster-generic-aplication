@@ -1,0 +1,24 @@
+{
+  "jhipsterGenericAplicationApp": {
+    "genericOneToMany": {
+      "home": {
+        "title": "Generic One To Manies",
+        "createLabel": "Create a new Generic One To Many",
+        "createOrEditLabel": "Create or edit a Generic One To Many",
+        "search": "Search for Generic One To Many",
+        "notFound": "No Generic One To Manies found"
+      },
+      "created": "A new Generic One To Many is created with identifier {{ param }}",
+      "updated": "A Generic One To Many is updated with identifier {{ param }}",
+      "deleted": "A Generic One To Many is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Generic One To Many {{ id }}?"
+      },
+      "detail": {
+        "title": "Generic One To Many"
+      },
+      "fieldOneToMany": "Field One To Many",
+      "genericManyToOne": "Generic Many To One"
+    }
+  }
+}

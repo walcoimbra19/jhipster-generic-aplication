@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Generic.
+    -->
+    <changeSet id="20200929233457-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="generic_history_id"
+                                 baseTableName="generic"
+                                 constraintName="fk_generic_generic_history_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="generic_history"/>
+
+        <addForeignKeyConstraint baseColumnNames="generic_many_to_one_id"
+                                 baseTableName="generic"
+                                 constraintName="fk_generic_generic_many_to_one_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="generic_many_to_one"/>
+
+        <addForeignKeyConstraint baseColumnNames="generic_id"
+                                 baseTableName="generic_generic_many_to_many"
+                                 constraintName="fk_generic_generic_many_to_many_generic_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="generic"/>
+
+        <addForeignKeyConstraint baseColumnNames="generic_many_to_many_id"
+                                 baseTableName="generic_generic_many_to_many"
+                                 constraintName="fk_generic_generic_many_to_many_generic_many_to_many_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="generic_many_to_many"/>
+        
+    </changeSet>
+</databaseChangeLog>

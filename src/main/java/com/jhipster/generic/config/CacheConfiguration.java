@@ -49,6 +49,14 @@ public class CacheConfiguration {
             createCache(cm, com.jhipster.generic.domain.User.class.getName() + ".authorities");
             createCache(cm, com.jhipster.generic.domain.PersistentToken.class.getName());
             createCache(cm, com.jhipster.generic.domain.User.class.getName() + ".persistentTokens");
+            createCache(cm, com.jhipster.generic.domain.Generic.class.getName());
+            createCache(cm, com.jhipster.generic.domain.Generic.class.getName() + ".genericManyToManies");
+            createCache(cm, com.jhipster.generic.domain.GenericHistory.class.getName());
+            createCache(cm, com.jhipster.generic.domain.GenericManyToMany.class.getName());
+            createCache(cm, com.jhipster.generic.domain.GenericManyToMany.class.getName() + ".generics");
+            createCache(cm, com.jhipster.generic.domain.GenericOneToMany.class.getName());
+            createCache(cm, com.jhipster.generic.domain.GenericManyToOne.class.getName());
+            createCache(cm, com.jhipster.generic.domain.GenericManyToOne.class.getName() + ".genericOneToManies");
             // jhipster-needle-ehcache-add-entry
         };
     }
