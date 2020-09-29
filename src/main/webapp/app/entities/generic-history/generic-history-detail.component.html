@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="genericHistory">
+            <h2><span jhiTranslate="jhipsterGenericAplicationApp.genericHistory.detail.title">Generic History</span> {{ genericHistory.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.genericHistory.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{ genericHistory.startDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.genericHistory.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{ genericHistory.endDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.genericHistory.language">Language</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'jhipsterGenericAplicationApp.Language.' + genericHistory.language }}">{{ genericHistory.language }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/generic-history', genericHistory.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+{
+  "name": "GenericManyToOne",
+  "fields": [
+    {
+      "fieldName": "fieldManyToOne",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "genericOneToMany",
+      "otherEntityRelationshipName": "genericManyToOne",
+      "relationshipName": "genericOneToMany"
+    }
+  ],
+  "changelogDate": "20200929233857",
+  "entityTableName": "generic_many_to_one",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

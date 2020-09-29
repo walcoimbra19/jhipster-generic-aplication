@@ -1,0 +1,24 @@
+{
+  "jhipsterGenericAplicationApp": {
+    "genericManyToMany": {
+      "home": {
+        "title": "Generic Many To Manies",
+        "createLabel": "Create a new Generic Many To Many",
+        "createOrEditLabel": "Create or edit a Generic Many To Many",
+        "search": "Search for Generic Many To Many",
+        "notFound": "No Generic Many To Manies found"
+      },
+      "created": "A new Generic Many To Many is created with identifier {{ param }}",
+      "updated": "A Generic Many To Many is updated with identifier {{ param }}",
+      "deleted": "A Generic Many To Many is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Generic Many To Many {{ id }}?"
+      },
+      "detail": {
+        "title": "Generic Many To Many"
+      },
+      "fieldManyToMany": "Field Many To Many",
+      "generic": "Generic"
+    }
+  }
+}

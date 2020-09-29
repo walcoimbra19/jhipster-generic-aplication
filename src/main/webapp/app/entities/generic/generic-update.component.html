@@ -1,0 +1,188 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-generic-heading" jhiTranslate="jhipsterGenericAplicationApp.generic.home.createOrEditLabel">Create or edit a Generic</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.fieldString" for="field_fieldString">Field String</label>
+                    <input type="text" class="form-control" name="fieldString" id="field_fieldString"
+                           formControlName="fieldString"/>
+                    <div *ngIf="editForm.get('fieldString')!.invalid && (editForm.get('fieldString')!.dirty || editForm.get('fieldString')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fieldString')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.fieldInteger" for="field_fieldInteger">Field Integer</label>
+                    <input type="number" class="form-control" name="fieldInteger" id="field_fieldInteger"
+                           formControlName="fieldInteger"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.fieldLong" for="field_fieldLong">Field Long</label>
+                    <input type="number" class="form-control" name="fieldLong" id="field_fieldLong"
+                           formControlName="fieldLong"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.fieldBigDecimal" for="field_fieldBigDecimal">Field Big Decimal</label>
+                    <input type="number" class="form-control" name="fieldBigDecimal" id="field_fieldBigDecimal"
+                           formControlName="fieldBigDecimal"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.fieldFloat" for="field_fieldFloat">Field Float</label>
+                    <input type="number" class="form-control" name="fieldFloat" id="field_fieldFloat"
+                           formControlName="fieldFloat"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.fieldDouble" for="field_fieldDouble">Field Double</label>
+                    <input type="number" class="form-control" name="fieldDouble" id="field_fieldDouble"
+                           formControlName="fieldDouble"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.fieldBoolean" for="field_fieldBoolean">Field Boolean</label>
+                    <input type="checkbox" class="form-control" name="fieldBoolean" id="field_fieldBoolean"
+                           formControlName="fieldBoolean"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.fieldLocalDate" for="field_fieldLocalDate">Field Local Date</label>
+                    <div class="input-group">
+                        <input id="field_fieldLocalDate" type="text" class="form-control" name="fieldLocalDate" ngbDatepicker #fieldLocalDateDp="ngbDatepicker" formControlName="fieldLocalDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fieldLocalDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.fieldZonedDateTime" for="field_fieldZonedDateTime">Field Zoned Date Time</label>
+                    <div class="d-flex">
+                        <input id="field_fieldZonedDateTime" type="datetime-local" class="form-control" name="fieldZonedDateTime" formControlName="fieldZonedDateTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.fieldDuration" for="field_fieldDuration">Field Duration</label>
+                    <input type="number" class="form-control" name="fieldDuration" id="field_fieldDuration"
+                           formControlName="fieldDuration"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.fieldUUID" for="field_fieldUUID">Field UUID</label>
+                    <input type="text" class="form-control" name="fieldUUID" id="field_fieldUUID"
+                           formControlName="fieldUUID"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.fieldBlob" for="field_fieldBlob">Field Blob</label>
+                    <div>
+                        <div *ngIf="editForm.get('fieldBlob')!.value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('fieldBlobContentType')!.value, editForm.get('fieldBlob')!.value)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{ editForm.get('fieldBlobContentType')!.value }}, {{ byteSize(editForm.get('fieldBlob')!.value) }}</span>
+                            <button type="button" (click)="editForm.patchValue({fieldBlob: null});editForm.patchValue({fieldBlobContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_fieldBlob" (change)="setFileData($event, 'fieldBlob', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="fieldBlob" id="field_fieldBlob"
+                           formControlName="fieldBlob"/>
+                    <input type="hidden" class="form-control" name="fieldBlobContentType" id="field_fieldBlobContentType"
+                           formControlName="fieldBlobContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.fieldAnyBlob" for="field_fieldAnyBlob">Field Any Blob</label>
+                    <div>
+                        <div *ngIf="editForm.get('fieldAnyBlob')!.value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('fieldAnyBlobContentType')!.value, editForm.get('fieldAnyBlob')!.value)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{ editForm.get('fieldAnyBlobContentType')!.value }}, {{ byteSize(editForm.get('fieldAnyBlob')!.value) }}</span>
+                            <button type="button" (click)="editForm.patchValue({fieldAnyBlob: null});editForm.patchValue({fieldAnyBlobContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_fieldAnyBlob" (change)="setFileData($event, 'fieldAnyBlob', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="fieldAnyBlob" id="field_fieldAnyBlob"
+                           formControlName="fieldAnyBlob"/>
+                    <input type="hidden" class="form-control" name="fieldAnyBlobContentType" id="field_fieldAnyBlobContentType"
+                           formControlName="fieldAnyBlobContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.fieldImageBlob" for="field_fieldImageBlob">Field Image Blob</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('fieldImageBlobContentType')!.value + ';base64,' + editForm.get('fieldImageBlob')!.value" style="max-height: 100px;" *ngIf="editForm.get('fieldImageBlob')!.value" alt="generic image"/>
+                        <div *ngIf="editForm.get('fieldImageBlob')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('fieldImageBlobContentType')!.value }}, {{ byteSize(editForm.get('fieldImageBlob')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('fieldImageBlob', 'fieldImageBlobContentType', 'file_fieldImageBlob')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_fieldImageBlob" (change)="setFileData($event, 'fieldImageBlob', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="fieldImageBlob" id="field_fieldImageBlob"
+                           formControlName="fieldImageBlob"/>
+                    <input type="hidden" class="form-control" name="fieldImageBlobContentType" id="field_fieldImageBlobContentType"
+                           formControlName="fieldImageBlobContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.fieldTextBlob" for="field_fieldTextBlob">Field Text Blob</label>
+                    <textarea class="form-control" name="fieldTextBlob" id="field_fieldTextBlob"
+                              formControlName="fieldTextBlob"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.genericHistory" for="field_genericHistory">Generic History</label>
+                    <select class="form-control" id="field_genericHistory" name="genericHistory" formControlName="genericHistory">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="genericHistoryOption.id === editForm.get('genericHistory')!.value?.id ? editForm.get('genericHistory')!.value : genericHistoryOption" *ngFor="let genericHistoryOption of generichistories; trackBy: trackById">{{ genericHistoryOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterGenericAplicationApp.generic.genericManyToOne" for="field_genericManyToOne">Generic Many To One</label>
+                    <select class="form-control" id="field_genericManyToOne" name="genericManyToOne" formControlName="genericManyToOne">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="genericManyToOneOption.id === editForm.get('genericManyToOne')!.value?.id ? editForm.get('genericManyToOne')!.value : genericManyToOneOption" *ngFor="let genericManyToOneOption of genericmanytoones; trackBy: trackById">{{ genericManyToOneOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterGenericAplicationApp.generic.genericManyToMany" for="field_genericManyToManies">Generic Many To Many</label>
+                    <select class="form-control" id="field_genericManyToManies" multiple name="genericManyToManies" formControlName="genericManyToManies">
+                        <option [ngValue]="getSelected(editForm.get('genericManyToManies')!.value, genericManyToManyOption)" *ngFor="let genericManyToManyOption of genericmanytomanies; trackBy: trackById">{{ genericManyToManyOption.fieldManyToMany }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

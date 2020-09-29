@@ -1,0 +1,24 @@
+{
+  "jhipsterGenericAplicationApp": {
+    "genericManyToOne": {
+      "home": {
+        "title": "Generic Many To Ones",
+        "createLabel": "Create a new Generic Many To One",
+        "createOrEditLabel": "Create or edit a Generic Many To One",
+        "search": "Search for Generic Many To One",
+        "notFound": "No Generic Many To Ones found"
+      },
+      "created": "A new Generic Many To One is created with identifier {{ param }}",
+      "updated": "A Generic Many To One is updated with identifier {{ param }}",
+      "deleted": "A Generic Many To One is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Generic Many To One {{ id }}?"
+      },
+      "detail": {
+        "title": "Generic Many To One"
+      },
+      "fieldManyToOne": "Field Many To One",
+      "genericOneToMany": "Generic One To Many"
+    }
+  }
+}
