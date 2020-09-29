@@ -1,0 +1,41 @@
+{
+  "jhipsterGenericAplicationApp": {
+    "generic": {
+      "home": {
+        "title": "Generics",
+        "createLabel": "Create a new Generic",
+        "createOrEditLabel": "Create or edit a Generic",
+        "search": "Search for Generic",
+        "notFound": "No Generics found"
+      },
+      "created": "A new Generic is created with identifier {{ param }}",
+      "updated": "A Generic is updated with identifier {{ param }}",
+      "deleted": "A Generic is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Generic {{ id }}?"
+      },
+      "detail": {
+        "title": "Generic"
+      },
+      "fieldString": "Field String",
+      "fieldInteger": "Field Integer",
+      "fieldLong": "Field Long",
+      "fieldBigDecimal": "Field Big Decimal",
+      "fieldFloat": "Field Float",
+      "fieldDouble": "Field Double",
+      "fieldBoolean": "Field Boolean",
+      "fieldLocalDate": "Field Local Date",
+      "fieldZonedDateTime": "Field Zoned Date Time",
+      "fieldDuration": "Field Duration",
+      "fieldUUID": "Field UUID",
+      "fieldBlob": "Field Blob",
+      "fieldAnyBlob": "Field Any Blob",
+      "fieldImageBlob": "Field Image Blob",
+      "fieldTextBlob": "Field Text Blob",
+      "genericHistory": "Generic History",
+      "genericOneToMany": "Generic One To Many",
+      "genericManyToOne": "Generic Many To One",
+      "genericManyToMany": "Generic Many To Many"
+    }
+  }
+}

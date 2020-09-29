@@ -1,0 +1,115 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="generic">
+            <h2><span jhiTranslate="jhipsterGenericAplicationApp.generic.detail.title">Generic</span> {{ generic.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldString">Field String</span></dt>
+                <dd>
+                    <span>{{ generic.fieldString }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldInteger">Field Integer</span></dt>
+                <dd>
+                    <span>{{ generic.fieldInteger }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldLong">Field Long</span></dt>
+                <dd>
+                    <span>{{ generic.fieldLong }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldBigDecimal">Field Big Decimal</span></dt>
+                <dd>
+                    <span>{{ generic.fieldBigDecimal }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldFloat">Field Float</span></dt>
+                <dd>
+                    <span>{{ generic.fieldFloat }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldDouble">Field Double</span></dt>
+                <dd>
+                    <span>{{ generic.fieldDouble }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldBoolean">Field Boolean</span></dt>
+                <dd>
+                    <span>{{ generic.fieldBoolean }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldLocalDate">Field Local Date</span></dt>
+                <dd>
+                    <span>{{ generic.fieldLocalDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldZonedDateTime">Field Zoned Date Time</span></dt>
+                <dd>
+                    <span>{{ generic.fieldZonedDateTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldDuration">Field Duration</span></dt>
+                <dd>
+                    <span>{{ generic.fieldDuration }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldUUID">Field UUID</span></dt>
+                <dd>
+                    <span>{{ generic.fieldUUID }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldBlob">Field Blob</span></dt>
+                <dd>
+                    <div *ngIf="generic.fieldBlob">
+                        <a (click)="openFile(generic.fieldBlobContentType, generic.fieldBlob)" jhiTranslate="entity.action.open">open</a>
+                        {{ generic.fieldBlobContentType }}, {{ byteSize(generic.fieldBlob) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldAnyBlob">Field Any Blob</span></dt>
+                <dd>
+                    <div *ngIf="generic.fieldAnyBlob">
+                        <a (click)="openFile(generic.fieldAnyBlobContentType, generic.fieldAnyBlob)" jhiTranslate="entity.action.open">open</a>
+                        {{ generic.fieldAnyBlobContentType }}, {{ byteSize(generic.fieldAnyBlob) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldImageBlob">Field Image Blob</span></dt>
+                <dd>
+                    <div *ngIf="generic.fieldImageBlob">
+                        <a (click)="openFile(generic.fieldImageBlobContentType, generic.fieldImageBlob)">
+                            <img [src]="'data:' + generic.fieldImageBlobContentType + ';base64,' + generic.fieldImageBlob" style="max-width: 100%;" alt="generic image"/>
+                        </a>
+                        {{ generic.fieldImageBlobContentType }}, {{ byteSize(generic.fieldImageBlob) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldTextBlob">Field Text Blob</span></dt>
+                <dd>
+                    <span>{{ generic.fieldTextBlob }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.genericHistory">Generic History</span></dt>
+                <dd>
+                    <div *ngIf="generic.genericHistory">
+                        <a [routerLink]="['/generic-history', generic.genericHistory?.id, 'view']">{{ generic.genericHistory?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.genericManyToOne">Generic Many To One</span></dt>
+                <dd>
+                    <div *ngIf="generic.genericManyToOne">
+                        <a [routerLink]="['/generic-many-to-one', generic.genericManyToOne?.id, 'view']">{{ generic.genericManyToOne?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterGenericAplicationApp.generic.genericManyToMany">Generic Many To Many</span></dt>
+                <dd>
+                    <span *ngFor="let genericManyToMany of generic.genericManyToManies; let last = last">
+                        <a [routerLink]="['/generic-many-to-many', genericManyToMany?.id, 'view']">{{ genericManyToMany.fieldManyToMany }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/generic', generic.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

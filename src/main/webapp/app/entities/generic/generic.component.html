@@ -1,0 +1,136 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterGenericAplicationApp.generic.home.title">Generics</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-generic" [routerLink]="['/generic/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="jhipsterGenericAplicationApp.generic.home.createLabel">
+            Create a new Generic
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'jhipsterGenericAplicationApp.generic.home.search' | translate }}">
+
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon icon="search"></fa-icon>
+                    </button>
+
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon icon="trash-alt"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="generics?.length === 0">
+        <span jhiTranslate="jhipsterGenericAplicationApp.generic.home.notFound">No generics found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="generics && generics.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldString">Field String</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldInteger">Field Integer</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldLong">Field Long</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldBigDecimal">Field Big Decimal</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldFloat">Field Float</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldDouble">Field Double</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldBoolean">Field Boolean</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldLocalDate">Field Local Date</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldZonedDateTime">Field Zoned Date Time</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldDuration">Field Duration</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldUUID">Field UUID</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldBlob">Field Blob</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldAnyBlob">Field Any Blob</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldImageBlob">Field Image Blob</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.fieldTextBlob">Field Text Blob</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.genericHistory">Generic History</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.genericManyToOne">Generic Many To One</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterGenericAplicationApp.generic.genericManyToMany">Generic Many To Many</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let generic of generics ;trackBy: trackId">
+                    <td><a [routerLink]="['/generic', generic.id, 'view']">{{ generic.id }}</a></td>
+                    <td>{{ generic.fieldString }}</td>
+                    <td>{{ generic.fieldInteger }}</td>
+                    <td>{{ generic.fieldLong }}</td>
+                    <td>{{ generic.fieldBigDecimal }}</td>
+                    <td>{{ generic.fieldFloat }}</td>
+                    <td>{{ generic.fieldDouble }}</td>
+                    <td>{{ generic.fieldBoolean }}</td>
+                    <td>{{ generic.fieldLocalDate | date:'mediumDate' }}</td>
+                    <td>{{ generic.fieldZonedDateTime | date:'medium' }}</td>
+                    <td>{{ generic.fieldDuration }}</td>
+                    <td>{{ generic.fieldUUID }}</td>
+                    <td>
+                        <a *ngIf="generic.fieldBlob" (click)="openFile(generic.fieldBlobContentType, generic.fieldBlob)" jhiTranslate="entity.action.open">open</a>
+                        <span *ngIf="generic.fieldBlob">{{ generic.fieldBlobContentType }}, {{ byteSize(generic.fieldBlob) }}</span>
+                    </td>
+                    <td>
+                        <a *ngIf="generic.fieldAnyBlob" (click)="openFile(generic.fieldAnyBlobContentType, generic.fieldAnyBlob)" jhiTranslate="entity.action.open">open</a>
+                        <span *ngIf="generic.fieldAnyBlob">{{ generic.fieldAnyBlobContentType }}, {{ byteSize(generic.fieldAnyBlob) }}</span>
+                    </td>
+                    <td>
+                        <a *ngIf="generic.fieldImageBlob" (click)="openFile(generic.fieldImageBlobContentType, generic.fieldImageBlob)">
+                            <img [src]="'data:' + generic.fieldImageBlobContentType + ';base64,' + generic.fieldImageBlob" style="max-height: 30px;" alt="generic image"/>
+                        </a>
+                        <span *ngIf="generic.fieldImageBlob">{{ generic.fieldImageBlobContentType }}, {{ byteSize(generic.fieldImageBlob) }}</span>
+                    </td>
+                    <td>{{ generic.fieldTextBlob }}</td>
+                    <td>
+                        <div *ngIf="generic.genericHistory">
+                            <a [routerLink]="['/generic-history', generic.genericHistory?.id, 'view']" >{{ generic.genericHistory?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="generic.genericManyToOne">
+                            <a [routerLink]="['/generic-many-to-one', generic.genericManyToOne?.id, 'view']" >{{ generic.genericManyToOne?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <span *ngFor="let genericManyToMany of generic.genericManyToManies; let last = last">
+                            <a class="form-control-static" [routerLink]="['/generic-many-to-many', genericManyToMany?.id, 'view']">{{ genericManyToMany.fieldManyToMany }}</a>{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/generic', generic.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/generic', generic.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(generic)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

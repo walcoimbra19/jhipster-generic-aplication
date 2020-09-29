@@ -1,0 +1,114 @@
+{
+  "name": "Generic",
+  "fields": [
+    {
+      "fieldName": "fieldString",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "fieldInteger",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "fieldLong",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "fieldBigDecimal",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "fieldFloat",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "fieldDouble",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "fieldBoolean",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "fieldLocalDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "fieldZonedDateTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "fieldDuration",
+      "fieldType": "Duration"
+    },
+    {
+      "fieldName": "fieldUUID",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "fieldBlob",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "fieldAnyBlob",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "fieldImageBlob",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "fieldTextBlob",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "genericHistory",
+      "otherEntityRelationshipName": "generic",
+      "relationshipName": "genericHistory",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "genericOneToMany",
+      "otherEntityRelationshipName": "generic",
+      "relationshipName": "genericOneToMany"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "genericManyToOne",
+      "otherEntityRelationshipName": "generic",
+      "relationshipName": "genericManyToOne",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "genericManyToMany",
+      "otherEntityRelationshipName": "generic",
+      "relationshipName": "genericManyToMany",
+      "otherEntityField": "fieldManyToMany",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200929233003",
+  "entityTableName": "generic",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
